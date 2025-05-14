@@ -7,6 +7,7 @@ export default function Resume() {
     const [match, setMatch] = useState(null);
     const [explanation, setExplanation] = useState("");
     const [insight, setInsight] = useState("");
+    const [improvementTips, setImprovementTips] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -16,7 +17,8 @@ export default function Resume() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
-        setInsight(""); // reset between runs
+        setInsight("");
+        setImprovementTips([]);
 
         if (!resumeFile || !jobDescription) {
             setError("Both fields are required.");
@@ -43,6 +45,7 @@ export default function Resume() {
             setMatch(data.matchPercentage);
             setExplanation(data.explanation);
             setInsight(data.insight || "");
+            setImprovementTips(data.improvementTips || []);
         } catch (err) {
             console.error("Fetch error:", err);
             setError(err.message);
@@ -118,11 +121,30 @@ export default function Resume() {
 
                     {/* Results */}
                     {match !== null && (
-                        <div className="mt-6 p-4 bg-blue-50 rounded">
+                        <div className="mt-6 p-4 bg-blue-50 rounded space-y-4">
                             <p className="text-xl font-semibold">
                                 Match: {match}%
                             </p>
-                            <p className="mt-2">{explanation}</p>
+                            <p>{explanation}</p>
+
+                            {improvementTips.length > 0 && (
+                                <div>
+                                    <h3 className="font-medium mt-4">
+                                        Improvement Tips:
+                                    </h3>
+                                    <ul className="list-disc list-inside mt-2 space-y-1">
+                                        {improvementTips.map((tip, idx) => (
+                                            <li
+                                                key={idx}
+                                                className="text-gray-700"
+                                            >
+                                                {tip}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
                             {insight && (
                                 <p className="mt-4 italic text-gray-700">
                                     {insight}

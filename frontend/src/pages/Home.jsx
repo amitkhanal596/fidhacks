@@ -4,6 +4,7 @@ import {
     DocumentTextIcon,
     ChatAlt2Icon,
     GiftIcon,
+    BriefcaseIcon
 } from "@heroicons/react/outline";
 
 export default function Home() {
@@ -11,6 +12,8 @@ export default function Home() {
 
     const goToResumeMatch = () => navigate("/resume-match");
     const goToForum = () => navigate("/forum");
+    const goToJobListings = () => navigate("/job-listings")
+
 
     const Step = ({ number, title, desc }) => (
         <div className="flex items-start space-x-4">
@@ -97,14 +100,17 @@ export default function Home() {
 
                     {/* Mentor Matching (Future) */}
                     <div className="text-center p-6 border rounded-lg hover:shadow-lg transition">
-                        <GiftIcon className="h-12 w-12 mx-auto mb-4 text-purple-600" />
-                        <h3 className="font-semibold mb-2">Reward System</h3>
+                        <BriefcaseIcon className="h-12 w-12 mx-auto mb-4 text-purple-600" />
+                        <h3 className="font-semibold mb-2">Job Listings</h3>
                         <p className="text-sm mb-4">
-                            Coming soon: Get rewarded for applying to jobs.
+                            Apply to a personalized list of jobs.
                         </p>
-                        <span className="text-gray-400 text-sm">
-                            Stay tuned
-                        </span>
+                        <button
+                            onClick={goToJobListings}
+                            className="text-purple-600 hover:underline"
+                        >
+                            View job listings
+                        </button>
                     </div>
                 </div>
             </section>

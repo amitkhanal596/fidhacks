@@ -68,6 +68,9 @@ const Header = () => {
           <li className="px-4 py-2 hover:bg-gray-700 rounded">
             <Link to="/forum" onClick={() => setIsOpen(false)}>Forum</Link>
           </li>
+          <li className="px-4 py-2 hover:bg-gray-700 rounded">
+            <Link to="/job-listings" onClick={() => setIsOpen(false)}>Job Listings</Link>
+          </li>
 
           {session ? (
             <li className="px-4 py-2 hover:bg-gray-700 rounded">
