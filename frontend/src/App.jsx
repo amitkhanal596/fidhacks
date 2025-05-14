@@ -7,8 +7,10 @@ import CreatePost from "./pages/CreatePost";
 import Header from "./components/Header";
 import Forum from "./pages/Forum";
 import JobListings from "./pages/JobListings";
+import About from "./pages/About";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
+
 
 function App() {
     return (
@@ -30,6 +32,7 @@ function App() {
                 />
                 <Route path="/create-username" element={<CreateUsername />} />
                 <Route path="/job-listings" element={<JobListings />} />
+                <Route path="/about" element={<About />} />
             </Routes>
         </>
     );
